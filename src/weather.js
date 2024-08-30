@@ -16,9 +16,6 @@ export async function loadJson() {
   );
   let data = await response.json();
 
-  
-
-
 
   populateInfo(data);
   populateDetails(data);
@@ -54,6 +51,7 @@ function populateInfo(data){
     const iconPath = icons(`./${iconName}.svg`)
     const farenheit = data.currentConditions.temp;
     const celsius = Math.round((farenheit-32)*5/9);
+    const dataTime = data.currentConditions.datetime;
 
     const description = document.querySelector('.weather-description');
     const city = document.querySelector('.weather-city_name');
@@ -65,8 +63,8 @@ function populateInfo(data){
     description.innerHTML = data.currentConditions.conditions;
     city.innerHTML = data.resolvedAddress;
     date.innerHTML = format(data.days[0].datetime,"EEEE, dd MMM");
-    time.innerHTML = data.currentConditions.datetime;
-    temperature.innerHTML = data.currentConditions.temp;
+    time.innerHTML = formatTime(dataTime);
+    temperature.innerHTML = `${data.currentConditions.temp} °C`;
     
     weather_icon.src = iconPath;
 }
@@ -77,8 +75,17 @@ function populateDetails(data){
     const rain = document.getElementById('rain')
     const wind = document.getElementById('wind')
 
-    feels.innerHTML = data.currentConditions.feelslike;
+    feels.innerHTML = `${data.currentConditions.feelslike} °C`;
     humidity.innerHTML = `${data.currentConditions.humidity} %`;
     rain.innerHTML = `${data.currentConditions.precipprob} %`;
     wind.innerHTML = `${data.currentConditions.windspeed} km/h`;
+}
+
+function formatTime(time){
+    const [hours, minutes] = time.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
+
+  // Format the time to 23:25pm
+  return format(date, 'HH:mm a');
 }
