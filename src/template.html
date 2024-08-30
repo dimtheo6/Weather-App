@@ -3,7 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Weather App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main">
+      <div class="weather-info">
+        <div class="weather-description">Overcast Clouds</div>
+        <div class="weather-city_name">Nafpaktos</div>
+        <div class="weather-date">Friday,30th Aug '24</div>
+        <div class="weather-time">9:57 pm</div>
+        <div class="weather-temperature">24C</div>
+        <img class="weather-icon" src="./icons/cloudy.svg"></img>
+        <div class="search-box">
+          <input
+            type="text"
+            name="search"
+            class="search-box-input"
+            placeholder="Search Location..."
+          />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+        <div class="details-container">
+          <div class="details-feels details-grp">
+            <i class="fa-solid fa-temperature-half"></i>
+            <div class="details-wrapper">
+              <div class="details-label">Feels Like</div>
+              <div class="details-data" id="feels">30C</div>
+            </div>
+          </div>
+          <div class="details-humidity details-grp">
+            <i class="fa-solid fa-droplet"></i>
+            <div class="details-wrapper">
+              <div class="details-label">Humidity</div>
+              <div class="details-data" id="humidity">76%</div>
+            </div>
+          </div>
+          <div class="details-rain details-grp">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <div class="details-wrapper">
+              <div class="details-label">Chance to Rain</div>
+              <div class="details-data" id="rain">80%</div>
+            </div>
+          </div>
+          <div class="details-wind details-grp">
+            <i class="fa-solid fa-wind"></i>
+            <div class="details-wrapper">
+              <div class="details-label">Wind Speed</div>
+              <div class="details-data" id="wind">2km/h</div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      
+    <div class="forecast"></div>
+    
+  </body>
 </html>
