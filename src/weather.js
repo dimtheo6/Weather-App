@@ -30,6 +30,7 @@ export function initApp() {
     loadJson();
   search_icon.addEventListener("click", () => {
     location = search.value;
+    search.value = "";
     loadJson();
   });
 
