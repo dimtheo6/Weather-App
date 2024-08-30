@@ -1,3 +1,13 @@
 {
-  "cSpell.ignoreWords": ["CDBV", "nafpaktos"]
+  "cSpell.ignoreWords": [
+    "CDBV",
+    "datetime",
+    "divs",
+    "feelslike",
+    "nafpaktos",
+    "precipprob",
+    "tempmax",
+    "tempmin",
+    "windspeed"
+  ]
 }

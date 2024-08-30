@@ -10,6 +10,9 @@ html {
 
 
 body{
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
     margin: 0;
     color: white;
     padding: 100px;
@@ -21,6 +24,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
 }
 
 /*#region weather info*/
@@ -106,3 +110,41 @@ body{
 }
 
 /*#endregion details info*/
+
+.forecast{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.forecast-option{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.forecast-daily-container{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.daily-day{
+    margin-bottom: 1rem;
+}
+
+.temperature-high{
+    font-size: 2rem;
+}
+
+.temperature-low{
+    margin-bottom: 1rem;
+}
+
+.daily-icon{
+    height: 50px;
+    width: 80px;
+    filter: invert();
+}
+
+
