@@ -1,6 +1,6 @@
 # Weather App
 
-#About The Project
+### About The Project
 ![Screenshot_21](https://github.com/user-attachments/assets/b6117847-ee94-45df-a513-fe92ba236b56)
 
 <h1>Features</h1>
