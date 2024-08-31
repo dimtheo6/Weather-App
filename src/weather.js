@@ -1,4 +1,3 @@
-/* eslint-disable */
 
 import { format } from "date-fns";
 const icons = require.context("./icons", false, /\.svg$/);
@@ -7,17 +6,19 @@ const search = document.querySelector(".search-box-input");
 const search_icon = document.querySelector(".fa-magnifying-glass");
 const key = "NK38F3VD6TQN5CDBV7U6UTX8H";
 let location = "Athens";
+let unit = "metric";
 
 export async function loadJson() {
   try {
     let response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${key}`
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${unit}&key=${key}`
     );
     let data = await response.json();
 
     populateInfo(data);
     populateDetails(data);
     populateForecast(data.days);
+
     console.log(data);
 
     return data;
@@ -26,8 +27,8 @@ export async function loadJson() {
   }
 }
 
-export function initApp() {
-    loadJson();
+export  function initApp() {
+  loadJson();
   search_icon.addEventListener("click", () => {
     location = search.value;
     search.value = "";
@@ -42,6 +43,17 @@ export function initApp() {
       loadJson();
     }
   });
+
+  const unitToggle = document.querySelector(".unit-toggle");
+  unitToggle.addEventListener("click", () => {
+    // Toggle the unit between "metric" (Celsius) and "us" (Fahrenheit)
+    unit = unit === "metric" ? "us" : "metric";
+    // Update the button text to reflect the change
+    unitToggle.innerText = unit === "metric" ? "Switch to °F" : "Switch to °C";
+    // Reload the weather data with the new unit
+    loadJson();
+  });
+
 }
 
 function populateInfo(data) {
@@ -60,7 +72,7 @@ function populateInfo(data) {
   city.innerHTML = data.resolvedAddress;
   date.innerHTML = format(data.days[0].datetime, "EEEE, dd MMM");
   time.innerHTML = formatTime(dataTime);
-  temperature.innerHTML = `${data.currentConditions.temp} °C`;
+  temperature.innerHTML = `${data.currentConditions.temp} °${unit === "metric" ? "C" : "F"}`;
 
   weather_icon.src = iconPath;
 }
@@ -71,10 +83,10 @@ function populateDetails(data) {
   const rain = document.getElementById("rain");
   const wind = document.getElementById("wind");
 
-  feels.innerHTML = `${data.currentConditions.feelslike} °C`;
+  feels.innerHTML = `${data.currentConditions.feelslike} °${unit === "metric" ? "C" : "F"}`;
   humidity.innerHTML = `${data.currentConditions.humidity} %`;
-  rain.innerHTML = `${data.currentConditions.precipprob} %`;
-  wind.innerHTML = `${data.currentConditions.windspeed} km/h`;
+  rain.innerHTML = `${data.days[0].precipprob} %`;
+  wind.innerHTML = `${data.currentConditions.windspeed} ${unit === "metric" ? "km/h" : "mph"}`;
 }
 
 function formatTime(time) {
@@ -94,10 +106,10 @@ function populateForecast(days) {
     day.innerHTML = format(days[index + 1].datetime, "EEEE");
 
     const temp_high = item.querySelector(".temperature-high");
-    temp_high.innerHTML = `${days[index + 1].tempmax} °C`;
+    temp_high.innerHTML = `${days[index + 1].tempmax} °${unit === "metric" ? "C" : "F"}`;
 
     const temp_low = item.querySelector(".temperature-low");
-    temp_low.innerHTML = `${days[index + 1].tempmin} °C`;
+    temp_low.innerHTML = `${days[index + 1].tempmin} °${unit === "metric" ? "C" : "F"}`;
 
     const icon = item.querySelector(".daily-icon");
     const iconName = days[index + 1].icon;

@@ -1,22 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+
 html { 
     background: url('./background.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
+    box-sizing: border-box;
   }
+
+
+  body {
+    visibility: hidden;
+
+}
+
+/* Optional: CSS for a loading indicator */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Make sure it's on top of everything */
+}
+
+.loading::after {
+    content: 'Loading...'; /* Add any loading indicator here */
+    font-size: 1.5rem;
+    color: #000; /* Adjust color as needed */
+}
 
 
 
 body{
     display: flex;
     flex-direction: column;
-    gap: 7rem;
-    margin: 0;
+    min-height: 100vh;
+    justify-content: space-between;
     color: white;
-    padding: 100px;
+    padding: 5rem;
     font-family: sans-serif;
+
+
+   
+    
 }
 
 
@@ -71,15 +109,24 @@ body{
     caret-color: white;
     width: 200px;
     font-weight: 600;
-    
-    
 }
+
+.search-box i{
+    cursor: pointer;
+}
+
 :focus{
     outline: none;
 }
 ::placeholder{
     color: white;
     font-size: 1rem;
+    font-weight: 600;
+}
+
+.unit-toggle{
+    font-size: 0.9rem;
+    cursor: pointer;
     font-weight: 600;
 }
 
@@ -111,9 +158,11 @@ body{
 
 /*#endregion details info*/
 
+/*#region  daily forecast*/
 .forecast{
     display: flex;
     flex-direction: column;
+    justify-items: flex-end;
     gap: 10px;
 }
 
@@ -147,4 +196,248 @@ body{
     filter: invert();
 }
 
+/*#endregion  daily forecast*/
 
+
+@media (max-width:1260px){
+    body{
+        padding: 3rem;
+        font-size: 60%;
+    }
+
+    .weather-description {
+        font-size: 2rem; /* Further reduce font size */
+    }
+
+    .weather-temperature {
+        font-size: 3rem; /* Further reduce font size */
+    }
+
+    .details-data {
+        font-size: 1.6rem; /* Further reduce font size */
+    }
+
+    .daily-day {
+        font-size: 1.3rem; /* Ensure text fits */
+    }
+
+    .temperature-high, .temperature-low {
+        font-size: 1rem; /* Ensure text fits */
+    }
+
+    .daily-icon {
+        height: 30px; /* Further reduce icon size */
+        width: 50px;
+    }
+
+}
+
+/* For screens 768px and below */
+@media (max-width: 768px) {
+    body{
+        padding: 2rem;
+        font-size: 60%;
+    }
+
+
+    .weather-info{
+        font-size: 0.8rem;
+    }
+
+    .weather-description {
+        font-size: 1rem; /* Further reduce font size */
+    }
+
+    .weather-temperature {
+        font-size: 2.2rem; /* Further reduce font size */
+    }
+
+
+
+    .unit-toggle{
+        font-size: 0.8rem;
+    }
+
+    .weather-icon{
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .search-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+        width: 150px;
+    }
+    
+    .search-box-input{
+        color: white;
+        font-size: 1.2rem;
+        background-color: transparent;
+        border: none;
+        caret-color: white;
+        width: 100px;
+        font-weight: 600;
+    }
+
+    ::placeholder{
+        font-size: 0.8rem;
+    }
+
+
+
+    .forecast-daily-container{
+        gap: 15px;
+    }
+
+    .details-container{
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .details-data {
+        font-size: 0.8rem; /* Further reduce font size */
+    }
+
+    .daily-day {
+        font-size: 0.8rem; /* Ensure text fits */
+    
+    }
+
+
+
+    .temperature-high{
+        font-size: 0.8rem;
+    }
+    .temperature-low{
+        font-size: 0.6rem;
+    }
+
+    .daily-icon {
+        height: 30px; /* Further reduce icon size */
+        width: 40px;
+    }
+
+    .search-box{
+        margin-bottom: 5rem;
+    }
+
+    .details-grp i{
+        font-size: 1.7rem;
+        width: 20px;
+    }
+}
+
+/* For screens 480px and below */
+@media (max-width: 550px) {
+    body{
+        padding: 1.5rem;
+    }
+
+
+    .weather-info{
+        font-size: 0.8rem;
+    }
+
+    .weather-description {
+        font-size: 1.5rem; /* Further reduce font size */
+    }
+
+    .weather-temperature {
+        font-size: 2.2rem; /* Further reduce font size */
+    }
+
+
+
+    .unit-toggle{
+        font-size: 0.8rem;
+    }
+
+    .weather-icon{
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .search-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+        width: 150px;
+    }
+    
+    .search-box-input{
+        color: white;
+        font-size: 1.2rem;
+        background-color: transparent;
+        border: none;
+        caret-color: white;
+        width: 100px;
+        font-weight: 600;
+    }
+
+    ::placeholder{
+        font-size: 0.8rem;
+    }
+
+
+    .forecast{
+        text-align: center;
+        align-items: center;
+    }
+
+    .forecast-daily-container{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        
+        
+    }
+
+    .forecast-daily{
+        display: flex;
+        gap: 15px;
+        
+    }
+
+    .details-container{
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+
+    .details-data {
+        font-size: 0.8rem; /* Further reduce font size */
+    }
+
+    .daily-day {
+        font-size: 0.8rem; /* Ensure text fits */
+        width: 6rem;
+    
+    }
+
+
+
+    .temperature-high{
+        font-size: 0.8rem;
+    }
+    .temperature-low{
+        font-size: 0.6rem;
+    }
+
+    .daily-icon {
+        height: 30px; /* Further reduce icon size */
+        width: 40px;
+    }
+
+    .search-box{
+        margin-bottom: 5rem;
+    }
+
+    .details-grp i{
+        font-size: 1.7rem;
+        width: 20px;
+    }
+}
