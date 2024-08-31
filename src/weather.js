@@ -1,4 +1,3 @@
-
 import { format } from "date-fns";
 const icons = require.context("./icons", false, /\.svg$/);
 
@@ -27,7 +26,7 @@ export async function loadJson() {
   }
 }
 
-export  function initApp() {
+export function initApp() {
   loadJson();
   search_icon.addEventListener("click", () => {
     location = search.value;
@@ -53,7 +52,6 @@ export  function initApp() {
     // Reload the weather data with the new unit
     loadJson();
   });
-
 }
 
 function populateInfo(data) {
