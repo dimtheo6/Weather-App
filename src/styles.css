@@ -313,6 +313,11 @@ body {
 
 /*#region For screens 550px and below */
 @media (max-width: 550px) {
+
+  html {
+    background-size: 200% 100%; /* Adjust width for extra-small screens */
+  }
+
   body {
     padding: 1.5rem;
   }
