@@ -18,8 +18,6 @@ export async function loadJson() {
     populateDetails(data);
     populateForecast(data.days);
 
-    console.log(data);
-
     return data;
   } catch (error) {
     console.error(error);
